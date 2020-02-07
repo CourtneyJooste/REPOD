@@ -1,3 +1,5 @@
+#!/bin/bash
+
 prefix="[REPOD GITCHECK]"
 
 function prepend() { while read line; do echo "${prefix} ${line}"; done; }
@@ -9,6 +11,9 @@ else
     if [ $(git rev-parse HEAD) = $(git ls-remote $(git rev-parse --abbrev-ref @{u} | sed 's/\// /g') | cut -f1) ]; then
         echo Repository is up-to-date | prepend
     else
+        git stash
+        git stash drop
+        git pull
         docker build -t $1 .
         docker tag $1 localhost:5000/$1 | prepend
         docker push localhost:5000/$1 | prepend

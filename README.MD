@@ -26,17 +26,19 @@ Create a .env file in the base directory of this app.
 
 The contents should be as follows
 
+```
 TAG=The tag of the repository. See the Tag section
 REFRESH_RATE=The refresh rate in minutes (optional)
 SLACK_WEBHOOK=The slack webhook to post to on success (optional)
+```
 
-### Running
-
+```bash
+# Running
 $ docker-compose up -d
 
-### Stopping
-
+# Stopping
 $ docker-compose down
+```
 
 ## REPOD
 
@@ -46,21 +48,19 @@ Requirements:
 - PM2 (recommended to run the process in a separate thread)
 - Yarn Package Manager
 
-### Running
-
+```bash
+# Running
 $ pm2 start repod.js
 
-### Stopping
-
+# Stopping
 $ pm2 stop repod
 
-### Restarting
-
+# Restarting
 $ pm2 reload repod
 
-### View REPOD Logs
-
+# View REPOD Logs
 $ pm2 log repod --lines <count>
+```
 
 # Tag
 
@@ -72,32 +72,37 @@ Examples using a tag will be explained below in Example Usage
 
 In the .env file in the root directory of this app, set the contents to:
 
+```
 TAG=myapp
+```
 
 ## Running your app
 
-### Launch the private repository
-
+```bash
+# Launch the private repository
 $ cd ./path/to/this/repo
 $ docker-compose up -d
 
-### Clone the repository you want to host
-
+# Clone the repository you want to host
 $ git clone <git remote> ~/projects/myapp/api
 $ cd ~/projects/myapp/api
 $ git checkout <branch to watch>
 
-### Build the repository with docker and push to the private repository
-
+# Build the repository with docker and push to the private repository
 $ docker build -t myapp .
 $ docker tag myapp localhost:5000/myapp
 $ docker push localhost:5000
 
-### Launch a service hosted on port 4500 with 3 replicas
+# (Optional, skip if already have a swarm) Create a Docker swarm
+$ docker swarm init
 
+# (Optional) If the step above fails, you may need to specify an IP for the swam
+$ docker swarm init --advertise-addr=your-ip-here
+
+# Launch a service hosted on port 4500 with 3 replicas
 $ docker service create -p 4500:4500 --replicas=3 --name myapp localhost:5000/myapp
 
-### Monitor for updates to the HEAD of the same branch you checked out to
-
+# Monitor for updates to the HEAD of the same branch you checked out to
 $ cd ./path/to/this/repo
 $ pm2 start repod.js
+```
