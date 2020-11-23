@@ -12,7 +12,7 @@ The aim of this project is to host a local Docker repository that will host the 
 
 If the remote HEAD on git is updated, the REPOD daemon will pull the changes and rebuild the source code into a Docker container.
 
-The Docker contaienr will then tag and update the private local repository with the new image.
+The Docker container will then tag and update the private local repository with the new image.
 
 The REPOD daemon will then restart the Docker service with the given tag which will gracefully self-heal and update each replica in the swarm with the new Docker image.
 
@@ -96,7 +96,7 @@ $ docker push localhost:5000
 # (Optional, skip if already have a swarm) Create a Docker swarm
 $ docker swarm init
 
-# (Optional) If the step above fails, you may need to specify an IP for the swam
+# (Optional) If the step above fails, you may need to specify an IP for the swarm
 $ docker swarm init --advertise-addr=your-ip-here
 
 # Launch a service hosted on port 4500 with 3 replicas
