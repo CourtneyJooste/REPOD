@@ -91,7 +91,7 @@ $ git checkout <branch to watch>
 # Build the repository with docker and push to the private repository
 $ docker build -t myapp .
 $ docker tag myapp localhost:5000/myapp
-$ docker push localhost:5000
+$ docker push localhost:5000/myapp
 
 # (Optional, skip if already have a swarm) Create a Docker swarm
 $ docker swarm init
@@ -104,5 +104,5 @@ $ docker service create -p 4500:4500 --replicas=3 --name myapp localhost:5000/my
 
 # Monitor for updates to the HEAD of the same branch you checked out to
 $ cd ./path/to/this/repo
-$ pm2 start repod.js
+$ pm2 start start.sh --name "repod" -x -- --prod
 ```

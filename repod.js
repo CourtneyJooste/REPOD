@@ -1,5 +1,4 @@
 const shell = require('shelljs');
-require('dotenv').config()
 
 const refresh = process.env.REFRESH_RATE;
 const tag = process.env.TAG;
@@ -18,7 +17,7 @@ if (refresh <= 0) {
 const runScript = () => {
     console.log("[REPOD] Executing gitcheck...");
     shell.exec('./gitcheck.sh ' + tag + (webhook ? ' ' + webhook : ''));
-    const now = new Date(); 
+    const now = new Date();
     const nextRun = now.setMinutes(now.getMinutes() + refresh);
     console.log("[REPOD] Gitcheck process complete. Executing next run at " + (new Date(nextRun)).toTimeString());
     setTimeout(() => runScript(), refresh * 60 * 1000);
