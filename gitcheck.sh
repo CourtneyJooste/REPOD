@@ -5,7 +5,7 @@ prefix="[REPOD GITCHECK]"
 function prepend() { while read line; do echo "${prefix} ${line}"; done; }
 
 if [ -z $1 ]; then
-    echo "Usage is './gitcheck.sh <repository> <wehbook (optional>'" | prepend
+    echo "Usage is './gitcheck.sh <repository> <wehbook (optional)>'" | prepend
 else
     cd ~/projects/$1/api
     if [ $(git rev-parse HEAD) = $(git ls-remote $(git rev-parse --abbrev-ref @{u} | sed 's/\// /g') | cut -f1) ]; then

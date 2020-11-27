@@ -26,3 +26,5 @@ const runScript = () => {
 console.log("[REPOD] Running repository update daemon...");
 console.log("[REPOD] Refresh rate set to " + refresh + " minute(s).");
 setTimeout(() => runScript(), 20000);
+
+// TODO: repod helper script that can execute scripts using variables from .env

@@ -106,3 +106,30 @@ $ docker service create -p 4500:4500 --replicas=3 --name myapp localhost:5000/my
 $ cd ./path/to/this/repo
 $ pm2 start start.sh --name "repod" -x -- --prod
 ```
+
+# Manual Commands
+
+## Manual Rebuild
+
+```bash
+# Ensure the repod daemon is running
+
+# Build the repository with docker and push to the private repository
+$ yarn rebuild
+```
+
+## Manual Reboot Swarm
+
+```bash
+# Ensure the repod daemon and docker swarms are running
+
+# Scale swarm up and down (using 3 replicas)
+$ docker service scale myservice=0
+$ docker service scale myservice=3
+```
+
+## TODO
+
+- helper scripts using env variables
+- starting up instructions for nginx
+- instructions for redis

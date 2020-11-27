@@ -4,6 +4,7 @@
     "shelljs": "^0.8.3"
   },
   "scripts": {
-    "start": "node -r dotenv/config repod.js"
+    "start": "node -r dotenv/config repod.js",
+    "rebuild": "node -r dotenv/config rebuild.js"
   }
 }
