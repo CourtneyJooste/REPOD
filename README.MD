@@ -128,6 +128,17 @@ $ docker service scale myservice=0
 $ docker service scale myservice=3
 ```
 
+# Troubleshooting
+
+This section will cover common issues and fixes
+
+## EACCESS when building (during step 6 currently)
+
+```bash
+# in the project repo
+$ chmod -R a+rw .
+```
+
 ## TODO
 
 - helper scripts using env variables
