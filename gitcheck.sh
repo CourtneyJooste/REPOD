@@ -22,7 +22,6 @@ else
             echo "Posting success to Slack Webhook" | prepend
             curl -X POST -H 'Content-type: application/json' --data '{"text":"New '$1' server has been deployed"}' $2 | prepend
         fi
-        fi
         yes | docker system prune | prepend
     fi
 fi
