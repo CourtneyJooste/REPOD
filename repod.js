@@ -20,7 +20,7 @@ const runScript = () => {
     console.log("[REPOD] Executing gitcheck...");
     shell.exec('./gitcheck.sh ' + tag + (webhook ? ' ' + webhook : ''));
     const now = new Date();
-    const nextRun = new Date(currentDate.getTime() + refresh * ONE_MINUTE);
+    const nextRun = new Date(now.getTime() + refresh * ONE_MINUTE);
     console.log("[REPOD] Gitcheck process complete. Executing next run at " + (new Date(nextRun)).toTimeString());
     setTimeout(() => runScript(), refresh * ONE_MINUTE);
 }
