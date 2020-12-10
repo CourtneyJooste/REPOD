@@ -14,7 +14,7 @@ else
     docker build -t $1 .
     docker tag $1 localhost:5000/$1 | prepend
     docker push localhost:5000/$1 | prepend
-    docker service update $1 --image $1:latest | prepend
+    docker service update $1 --image localhost:5000/$1:latest | prepend
     if [ ! -z $2 ]; then
         echo "Posting success to Slack Webhook" | prepend
         curl -X POST -H 'Content-type: application/json' --data '{"text":"New '$1' server has been deployed (manual)"}' $2 | prepend
